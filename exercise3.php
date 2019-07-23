@@ -66,8 +66,6 @@ var_dump($result);
 
 //First approach is  WRONG
 
-$suits = ['clubs', 'diamonds', 'hearts', 'spades'];
-$ranks = ['ace' => 11, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7, 8 => 8, 9 => 9, 10 => 10, 'king' => 10, 'queen' => 10, 'jack' => 10];
 
 /* Let's make an array that has 4 of each and every rank item. Because what kind of suit it is doesn't affect the point.
 Something like this :
@@ -82,15 +80,61 @@ $newArray = array();
 //    return $addedItems;
 //}
 
-function cardDeck($rank) {
-    for($i = 0; $i < count($rank); $i++) {
-        $newArray = array('ace' => 11, 2 => 2);
-    }
-    return $newArray;
-}
-$result = cardDeck($ranks);
-var_dump($result);
+// function cardDeck($rank) {
+//     for($i = 0; $i < count($rank); $i++) {
+//         $newArray = array('ace' => 11, 2 => 2);
+//     }
+//     return $newArray;
+// }
+// $result = cardDeck($ranks);
+// var_dump($result);
 
+/* 
+Third approach is to use multidimensional array.
+ */
+
+// $suits = ['clubs', 'diamonds', 'hearts', 'spades'];
+// $ranks = [
+//     'ace' => ['point' => 11, 'nb' => 4],
+//     2 => ['point' => 2, 'nb' => 4],
+//     3 => ['point' => 3, 'nb' => 4],
+//     4 => ['point' => 3, 'nb' => 4],
+//     5 => ['point' => 5, 'nb' => 4],
+//     6 => ['point' => 6, 'nb' => 4],
+//     7 => ['point' => 7, 'nb' => 4],
+//     8 => ['point' => 8, 'nb' => 4],
+//     9 => ['point' => 9, 'nb' => 1],
+//     10 => ['point' => 10, 'nb' => 4],
+//     'king' => ['point' => 10, 'nb' => 4],
+//     'queen' => ['point' => 10, 'nb' => 4],
+//     'jack' => ['point' => 10, 'nb' => 4]
+// ];
+
+// function pickCard(array $cards) {
+//     rand(0, count($cards))
+// }
+
+//Third approach is not for this simplified version of Blackjack, it's more for original rule.
+
+/*
+Fourth approach : let's dynamically generate an array
+*/ 
+$suits = ['clubs', 'diamonds', 'hearts', 'spades'];
+$ranks = [
+    'ace' => ['point' => 11, 'nb' => 4],
+    2 => ['point' => 2, 'nb' => 4],
+    3 => ['point' => 3, 'nb' => 4],
+    4 => ['point' => 3, 'nb' => 4],
+    5 => ['point' => 5, 'nb' => 4],
+    6 => ['point' => 6, 'nb' => 4],
+    7 => ['point' => 7, 'nb' => 4],
+    8 => ['point' => 8, 'nb' => 4],
+    9 => ['point' => 9, 'nb' => 1],
+    10 => ['point' => 10, 'nb' => 4],
+    'king' => ['point' => 10, 'nb' => 4],
+    'queen' => ['point' => 10, 'nb' => 4],
+    'jack' => ['point' => 10, 'nb' => 4]
+];
 function blackJack($player1, $player2){
 
 }
