@@ -6,13 +6,13 @@
 *Second parameter must default to 0. Ensure it is correctly commented.
 */
 
-function challenge( $num, $value = 0) { // second @param is an optional, has default value of 0.
-    return $num * $num + $value;
-}
-echo challenge(2, 1);
+// function challenge( $num, $value = 0) { // second @param is an optional, has default value of 0.
+//     return $num * $num + $value;
+// }
+// echo challenge(2, 1);
 
-echo '<br>';
-echo '<br>';
+// echo '<br>';
+// echo '<br>';
 
 /**
  *create a basic blackjack game based on the example*
@@ -71,18 +71,18 @@ var_dump($result);
 Something like this :
 $deck = ['ace', 'ace', 'ace', 'ace', 2, 2, 2, 2, ... 'jack','jack', 'jack', 'jack'];
  */
-$newArray = array();
+// $newArray = array();
 
-//function cardDeck($rank) {
+// function cardDeck($rank) {
 //    for($i = 0; $i < count($rank); $i++) {
 //        $addedItems = array_fill(0, $i+4, $rank[$i]);
 //    }
 //    return $addedItems;
-//}
+// }
 
 // function cardDeck($rank) {
 //     for($i = 0; $i < count($rank); $i++) {
-//         $newArray = array('ace' => 11, 2 => 2);
+//         $newArray = array();
 //     }
 //     return $newArray;
 // }
@@ -121,20 +121,53 @@ Fourth approach : let's dynamically generate an array
 */ 
 $suits = ['clubs', 'diamonds', 'hearts', 'spades'];
 $ranks = [
-    'ace' => ['point' => 11, 'nb' => 4],
-    2 => ['point' => 2, 'nb' => 4],
-    3 => ['point' => 3, 'nb' => 4],
-    4 => ['point' => 3, 'nb' => 4],
-    5 => ['point' => 5, 'nb' => 4],
-    6 => ['point' => 6, 'nb' => 4],
-    7 => ['point' => 7, 'nb' => 4],
-    8 => ['point' => 8, 'nb' => 4],
-    9 => ['point' => 9, 'nb' => 1],
-    10 => ['point' => 10, 'nb' => 4],
-    'king' => ['point' => 10, 'nb' => 4],
-    'queen' => ['point' => 10, 'nb' => 4],
-    'jack' => ['point' => 10, 'nb' => 4]
+    'ace' => 11,
+    2 => 2,
+    3 => 3,
+    4 => 4,
+    5 => 5,
+    6 => 6,
+    7 => 7,
+    8 => 8,
+    9 => 9,
+    10 => 10,
+    'king' => 10,
+    'queen' => 10,
+    'jack' => 10
 ];
-function blackJack($player1, $player2){
+
+
+$mainDeck = [];
+
+foreach($ranks as $card => $point) {
+    foreach($suits as $suit) {
+        $deckKey = $card . '-' . $suit; 
+        $mainDeck[$deckKey] = $point;
+    }
+}
+
+function pickCards(array $cards){
+    // Random Key var : pick random cards
+    $rdk = array_rand($cards);
+    $pickedCardPoint = $cards[$rdk];
+
+    return ['card' => $rdk, 'point' => $cards[$rdk]];
+}
+
+function blackJack($mainDeck){
+    for($j = 0; $j < 2; $j++) {
+        $cardPicked = pickCards($mainDeck);
+        $player1[] = $cardPicked;
+        unset($mainDeck[$cardPicked['card']]);
+
+        $cardPicked = pickCards($mainDeck);
+        $player2[] = $cardPicked;
+        unset($mainDeck[$cardPicked['card']]);
+    }
+    var_dump($player1);
+    var_dump($player2);
+    var_dump($mainDeck);
 
 }
+
+blackJack($mainDeck);
