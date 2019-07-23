@@ -75,13 +75,19 @@ $deck = ['ace', 'ace', 'ace', 'ace', 2, 2, 2, 2, ... 'jack','jack', 'jack', 'jac
  */
 $newArray = array();
 
+//function cardDeck($rank) {
+//    for($i = 0; $i < count($rank); $i++) {
+//        $addedItems = array_fill(0, $i+4, $rank[$i]);
+//    }
+//    return $addedItems;
+//}
+
 function cardDeck($rank) {
     for($i = 0; $i < count($rank); $i++) {
-        $addedItems = array_fill(0, $i+4, $rank[$i]);
+        $newArray = array('ace' => 11, 2 => 2);
     }
-    return $addedItems;
+    return $newArray;
 }
-
 $result = cardDeck($ranks);
 var_dump($result);
 
