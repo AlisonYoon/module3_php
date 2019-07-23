@@ -67,7 +67,7 @@ var_dump($result);
 //First approach is  WRONG
 
 $suits = ['clubs', 'diamonds', 'hearts', 'spades'];
-$ranks = ['ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'king', 'queen', 'jack'];
+$ranks = ['ace' => 11, 2 => 2, 3 => 3, 4 => 4, 5 => 5, 6 => 6, 7 => 7, 8 => 8, 9 => 9, 10 => 10, 'king' => 10, 'queen' => 10, 'jack' => 10];
 
 /* Let's make an array that has 4 of each and every rank item. Because what kind of suit it is doesn't affect the point.
 Something like this :
