@@ -33,8 +33,6 @@ echo '<br>';
 */
 
 
-$suits = ['clubs', 'diamonds', 'hearts', 'spades'];
-$ranks = ['ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'king', 'queen', 'jack'];
 
 /*I should make an entire card deck array - an associative array that looks like this:
 $deck = [$suits[0] => $ranks[0], $suits[0] => $ranks[1], $suits[0] => $ranks[2], ... $suits[0] => $ranks[12],
@@ -47,6 +45,7 @@ $suits[3] => $ranks[0], $suits[3] => $ranks[1], $suits[3] => $ranks[2], ... $sui
 NOPE, this cannot work. An associative array can't have multiple of the same key.
 */
 
+/*
 function cardDeck($suit, $rank) {
     $i  =0;
     $j = 0;
@@ -63,7 +62,28 @@ function cardDeck($suit, $rank) {
 
 $result = cardDeck($suits, $ranks);
 var_dump($result);
+*/
 
+//First approach is  WRONG
+
+$suits = ['clubs', 'diamonds', 'hearts', 'spades'];
+$ranks = ['ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'king', 'queen', 'jack'];
+
+/* Let's make an array that has 4 of each and every rank item. Because what kind of suit it is doesn't affect the point.
+Something like this :
+$deck = ['ace', 'ace', 'ace', 'ace', 2, 2, 2, 2, ... 'jack','jack', 'jack', 'jack'];
+ */
+$newArray = array();
+
+function cardDeck($rank) {
+    for($i = 0; $i < count($rank); $i++) {
+        $addedItems = array_fill(0, $i+4, $rank[$i]);
+    }
+    return $addedItems;
+}
+
+$result = cardDeck($ranks);
+var_dump($result);
 
 function blackJack($player1, $player2){
 
