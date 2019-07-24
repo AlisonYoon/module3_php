@@ -90,21 +90,30 @@ function deal($cards) {
 
 // Print out each player's hand
 function displayCards($mainDeck, $playerCards){
+    $card1 = $playerCards[0]['card'];
+    $card2 = $playerCards[1]['card'];
+    $card3 = $playerCards[2]['card'];
+    $card4 = $playerCards[3]['card'];
+
+    $card1Class= explode('-', $card1);
+    $card2Class= explode('-', $card2);
+    $card3Class= explode('-', $card3);
+    $card4Class= explode('-', $card4);
+
     echo '<h1 class="player-name">Tom</h1>';
-    echo '<div class="card">' . $playerCards[0]['card'] . '</div><div class="card">' . $playerCards[1]['card'] . '</div>' ;
+    echo '<div class="players-card">';
+    echo '<div class="card ' . $card1Class[0] . ' ' . $card1Class[1] . '">' . $playerCards[0]['card'] . '</div><div class="card ' . $card2Class[0] . ' ' . $card2Class[1] . '">' . $playerCards[1]['card'] . '</div>' ;
+    echo '</div>';
     echo '<h1 class="player-name">Jerry</h1>';
-    echo '<div class="card">' . $playerCards[2]['card'] . '</div><div class="card">' . $playerCards[3]['card'] . '</div>' ;
+    echo '<div class="players-card">';
+    echo '<div class="card ' . $card3Class[0] . ' ' . $card3Class[1] . '">' . $playerCards[2]['card'] . '</div><div class="card ' . $card4Class[0] . ' ' . $card4Class[1] . '">' . $playerCards[3]['card'] . '</div>' ;
+    echo '</div>';
 }
 
 //Determine winner
 function winnerIs($playerCards){
     $player1Points = $playerCards[0]['point'] + $playerCards[1]['point'];
     $player2Points = $playerCards[2]['point'] + $playerCards[3]['point'];
-
-//    echo '<br>';
-//    echo '<p class="points">Tom: ' . $player1Points . '</p>';
-//    echo '<br>';
-//    echo '<p class="points">Jerry: ' . $player2Points . '</p>';
 
     if($player1Points > $player2Points) {
         if($player1Points > 21) {
@@ -119,7 +128,7 @@ function winnerIs($playerCards){
             echo '<p class="winner-msg">' . 'Winner is Jerry' . '</p>';
         }
     } else {
-    echo 'It\'s draw';
+    echo '<p class="winner-msg">' . 'It\'s draw' . '</p>';
     }
     return [$player1Points, $player2Points];
 }
@@ -127,6 +136,7 @@ function winnerIs($playerCards){
 $mainDeck = makeDeck($ranks, $suits, $mainDeck);
 $playerCards = deal($mainDeck);    //Get return value of deal()
 
-displayCards($mainDeck, $playerCards);    //Print players' hand
+var_dump($playerCards);
+//displayCards($mainDeck, $playerCards);    //Print players' hand
 $results = winnerIs($playerCards);    //Compare players' points and print who the winner is
 

@@ -8,6 +8,10 @@
 </head>
 <body>
 <div id="container">
+    <div class="display-card">
+       <?php displayCards($mainDeck, $playerCards); ?>
+    </div>
+
     <div class="player-seat">
         <div class="player">Tom :
             <?php echo $results[0]; ?>
@@ -20,6 +24,10 @@
             <?php echo $results[1]; ?>
         </div>
 
+    </div>
+
+    <div class="result-board">
+        <?php winnerIs($playerCards); ?>
     </div>
 
 </div>
