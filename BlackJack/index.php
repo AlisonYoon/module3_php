@@ -1,7 +1,7 @@
 <?php require 'game.php'; ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Blackjack game</title>
     <link rel="stylesheet" href="style.css">
