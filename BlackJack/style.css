@@ -17,8 +17,104 @@ body {
     border: 2px solid #999;
     border-radius: 5px;
     background: #fff;
+    position: relative;
 }
 
 .players-card {
     display: flex;
+}
+[class*="hearts"],
+[class*="diamonds"] {
+    color: #ff0000;
+}
+
+[class*="diamonds"]:before,
+[class*="diamonds"]:after {
+    content: "♦";
+}
+
+[class*="hearts"]:before,
+[class*="hearts"]:after {
+    content: "♥";
+}
+
+[class*="clubs"]:before,
+[class*="clubs"]:after {
+    content: "♣";
+}
+
+[class*="spades"]:before,
+[class*="spades"]:after {
+    content: "♠";
+}
+.card:before {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.card:after {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+.card span {
+    position: absolute;
+    left: 0%;
+    top: 35%;
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+}
+
+.card[class*="ace"] span:before {
+    content: "A";
+}
+
+.card[class*="2"] span:before {
+    content: "2";
+}
+
+.card[class*="3"] span:before {
+    content: "3";
+}
+
+.card[class*="4"] span:before {
+    content: "4";
+}
+
+.card[class*="5"] span:before {
+    content: "5";
+}
+
+.card[class*="6"] span:before {
+    content: "6";
+}
+
+.card[class*="7"] span:before {
+    content: "7";
+}
+
+.card[class*="8"] span:before {
+    content: "8";
+}
+
+.card[class*="9"] span:before {
+    content: "9";
+}
+
+.card[class*="10"] span:before {
+    content: "10";
+}
+
+.card[class*="jack"] span:before {
+    content: "J";
+}
+
+.card[class*="queen"] span:before {
+    content: "Q";
+}
+
+.card[class*="king"] span:before {
+    content: "K";
 }

@@ -102,11 +102,11 @@ function displayCards($mainDeck, $playerCards){
 
     echo '<h1 class="player-name">Tom</h1>';
     echo '<div class="players-card">';
-    echo '<div class="card ' . $card1Class[0] . ' ' . $card1Class[1] . '">' . $playerCards[0]['card'] . '</div><div class="card ' . $card2Class[0] . ' ' . $card2Class[1] . '">' . $playerCards[1]['card'] . '</div>' ;
+    echo '<div class="card ' . $card1Class[0] . ' ' . $card1Class[1] . '"><span></span></div><div class="card ' . $card2Class[0] . ' ' . $card2Class[1] . '"><span></span></div>' ;
     echo '</div>';
     echo '<h1 class="player-name">Jerry</h1>';
     echo '<div class="players-card">';
-    echo '<div class="card ' . $card3Class[0] . ' ' . $card3Class[1] . '">' . $playerCards[2]['card'] . '</div><div class="card ' . $card4Class[0] . ' ' . $card4Class[1] . '">' . $playerCards[3]['card'] . '</div>' ;
+    echo '<div class="card ' . $card3Class[0] . ' ' . $card3Class[1] . '"><span></span></div><div class="card ' . $card4Class[0] . ' ' . $card4Class[1] . '"><span></span></div>' ;
     echo '</div>';
 }
 
@@ -136,7 +136,7 @@ function winnerIs($playerCards){
 $mainDeck = makeDeck($ranks, $suits, $mainDeck);
 $playerCards = deal($mainDeck);    //Get return value of deal()
 
-var_dump($playerCards);
+//var_dump($playerCards);
 //displayCards($mainDeck, $playerCards);    //Print players' hand
 $results = winnerIs($playerCards);    //Compare players' points and print who the winner is
 
