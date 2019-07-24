@@ -1,4 +1,46 @@
 <?php
+/**
+ *Create a function that takes a number and multiplies it by itself
+ *and adds the second parameter then returns the value.
+ *Second parameter must default to 0. Ensure it is correctly commented.
+ */
+
+// function challenge( $num, $value = 0) { // second @param is an optional, has default value of 0.
+//     return $num * $num + $value;
+// }
+// echo challenge(2, 1);
+
+// echo '<br>';
+// echo '<br>';
+
+/**
+ *create a basic blackjack game based on the example*
+ *
+ * 1. 2 players
+ * 2. 1 deck
+ * 3. Each player gets 2 random cards
+ * 4. Cards have points values:
+ * Ace = 11
+ * 2 = 2
+ * 10 = 10
+ * J = 10
+ * Q = 10
+ * K = 10
+ *
+ * 5. Winner has highest points unless points > 21, then they are the loser.
+ *
+ */
+
+/**
+ *Functions used
+ *
+ * foreach(NOT a function) : Dynamically generate card deck with above $suits and $ranks array
+ * pickCards(array $cards) : Randomly pick cards from the deck for players
+ * deal($mainDeck) : Deal while getting rid of the cards that are picked from the deck
+ * blackJack($mainDeck, $playerCards) : Main game
+ * winnerIs($player1Points, $player2Points) : Determine winner
+ *
+ */
 
 $suits = ['clubs', 'diamonds', 'hearts', 'spades'];
 $ranks = [
@@ -40,36 +82,32 @@ function pickCards(array $cards) {
 //Deal while getting rid of the cards that are picked from the deck
 function deal($mainDeck) {
     $playerCards = [];
-    for($j = 0; $j < 2; $j++) {
+    for($j = 0; $j < 4; $j++) {
         $cardPicked = pickCards($mainDeck);
-        $player1[] = $cardPicked;
+        $playerCards[] = $cardPicked;
         unset($mainDeck[$cardPicked['card']]);    //Remove picked cards from the deck
-
-        $cardPicked = pickCards($mainDeck);    //Next player will pick cards from the deck excluding the cards that are already picked
-        $player2[] = $cardPicked;
-        unset($mainDeck[$cardPicked['card']]); //Remove picked cards from the deck
     }
-    $playerCards = array_merge($player1, $player2);
     return $playerCards;
 }
 
-// Main game
-function blackJack($mainDeck){
-    $results = deal($mainDeck);
+$playerCards = deal($mainDeck);    //Get return value of deal()
 
-    $player1Points = $results[0]['point'] + $results[1]['point'];
-    $player2Points = $results[2]['point'] + $results[3]['point'];
+// Main game
+function blackJack($mainDeck, $playerCards){
+
+    $player1Points = $playerCards[0]['point'] + $playerCards[1]['point'];
+    $player2Points = $playerCards[2]['point'] + $playerCards[3]['point'];
 
     //var_dump($player1);
     echo "<br>";
     echo "<h1>Player 1</h1>";
-    echo '<ul><li>' . $results[0]['card'] . '</li><li>' . $results[1]['card'] . '</li></ul>' ;
+    echo '<ul><li>' . $playerCards[0]['card'] . '</li><li>' . $playerCards[1]['card'] . '</li></ul>' ;
     echo $player1Points;
     echo "<br>";
     //var_dump($player2);
     echo "<br>";
     echo "<h1>Player 2</h1>";
-    echo '<ul><li>' . $results[2]['card'] . '</li><li>' . $results[3]['card'] . '</li></ul>' ;
+    echo '<ul><li>' . $playerCards[2]['card'] . '</li><li>' . $playerCards[3]['card'] . '</li></ul>' ;
     echo $player2Points;
     echo "<br>";
     //var_dump($mainDeck);
@@ -99,5 +137,5 @@ function winnerIs($player1Points, $player2Points){
 }
 
 
-$results = blackJack($mainDeck);
+$results = blackJack($mainDeck, $playerCards);
 winnerIs($results[0], $results[1]);
