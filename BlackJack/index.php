@@ -9,16 +9,19 @@
 <body>
 <div id="container">
     <div class="player-seat">
-        <div class="player">Tom</div>
-        <?php $p1Score = $results[0]; ?>
+        <div class="player">Tom :
+            <?php echo $results[0]; ?>
+        </div>
+
     </div>
 
     <div class="player-seat">
-        <div class="player">Jerry</div>
-        <?php $p2Score = $results[1]; ?>
+        <div class="player">Jerry :
+            <?php echo $results[1]; ?>
+        </div>
+
     </div>
 
-<!--    <div class="result">--><?php //echo winnerIs($playerCards); ?><!--</div>-->
 </div>
 </body>
 </html>
