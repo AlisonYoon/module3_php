@@ -63,11 +63,14 @@ $ranks = [
 $mainDeck = [];
 
 // Dynamically generate card deck with above $suits and $ranks array
-foreach($ranks as $card => $point) {
-    foreach($suits as $suit) {
-    $deckKey = $card . '-' . $suit; //this is the key for new $mainDeck array
-    $mainDeck[$deckKey] = $point; //$point is the value for each key in a new $mainDeck array
+function makeDeck($ranks, $suits, $mainDeck){
+    foreach($ranks as $card => $point) {
+        foreach($suits as $suit) {
+            $deckKey = $card . '-' . $suit; //this is the key for new $mainDeck array
+            $mainDeck[$deckKey] = $point; //$point is the value for each key in a new $mainDeck array
+        }
     }
+    return $mainDeck;
 }
 
 // Randomly pick cards from the deck for players
@@ -80,17 +83,15 @@ function pickCards(array $cards) {
 }
 
 //Deal while getting rid of the cards that are picked from the deck
-function deal($mainDeck) {
+function deal($cards) {
     $playerCards = [];
     for($j = 0; $j < 4; $j++) {
-        $cardPicked = pickCards($mainDeck);
+        $cardPicked = pickCards($cards);
         $playerCards[] = $cardPicked;
-        unset($mainDeck[$cardPicked['card']]);    //Remove picked cards from the deck
+        unset($cards[$cardPicked['card']]);    //Remove picked cards from the deck
     }
     return $playerCards;
 }
-
-$playerCards = deal($mainDeck);    //Get return value of deal()
 
 // Main game
 function blackJack($mainDeck, $playerCards){
@@ -135,6 +136,10 @@ function winnerIs($player1Points, $player2Points){
     echo "It's draw";
     }
 }
+
+$mainDeck = makeDeck($ranks, $suits, $mainDeck);
+$playerCards = deal($mainDeck);    //Get return value of deal()
+
 
 $results = blackJack($mainDeck, $playerCards);    //Get return value of blackJack()
 winnerIs($results[0], $results[1]);
