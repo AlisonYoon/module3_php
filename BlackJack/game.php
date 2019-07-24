@@ -73,21 +73,17 @@ function makeDeck($ranks, $suits, $mainDeck){
     return $mainDeck;
 }
 
-// Randomly pick cards from the deck for players
-function pickCards(array $cards) {
-    // rdk means "Random Key" : pick random cards
-    $rdk = array_rand($cards);    //This will be a random key from the $mainDeck array
-    $pickedCardPoint = $cards[$rdk];    //This will be that random key's value(point)
-
-    return ['card' => $rdk, 'point' => $pickedCardPoint];    //Return those above as an associative array
-}
-
 //Deal while getting rid of the cards that are picked from the deck
 function deal($cards) {
-    $playerCards = [];
+
+    $playerCards = [];    //an empty array for 4 randomly picked cards
     for($j = 0; $j < 4; $j++) {
-        $cardPicked = pickCards($cards);
-        $playerCards[] = $cardPicked;
+        //Randomly pick cards from the deck for players
+        $rdk = array_rand($cards);    //This will be a random key from the $mainDeck array
+        $pickedCardPoint = $cards[$rdk];    //This will be that random key's value(point)
+        $cardPicked = ['card' => $rdk, 'point' => $pickedCardPoint];    //Store those above as an associative array
+
+        $playerCards[] = $cardPicked;    //Make nested array that has 4 arrays which are picked cards
         unset($cards[$cardPicked['card']]);    //Remove picked cards from the deck
     }
     return $playerCards;
@@ -139,7 +135,6 @@ function winnerIs($player1Points, $player2Points){
 
 $mainDeck = makeDeck($ranks, $suits, $mainDeck);
 $playerCards = deal($mainDeck);    //Get return value of deal()
-
 
 $results = blackJack($mainDeck, $playerCards);    //Get return value of blackJack()
 winnerIs($results[0], $results[1]);
