@@ -36,8 +36,8 @@
  *
  * foreach(NOT a function) : Dynamically generate card deck with $suits and $ranks array
  * deal($mainDeck) : Deal while getting rid of the cards that are picked from the deck
- * blackJack($mainDeck, $playerCards) : Print out each player's hand
- * winnerIs($player1Points, $player2Points) : Determine winner
+ * displayCards($mainDeck, $playerCards) : Print out each player's hand
+ * winnerIs($playerCards) : Determine winner
  *
  */
 
@@ -89,49 +89,50 @@ function deal($cards) {
 }
 
 // Print out each player's hand
-function blackJack($mainDeck, $playerCards){
-
-    $player1Points = $playerCards[0]['point'] + $playerCards[1]['point'];
-    $player2Points = $playerCards[2]['point'] + $playerCards[3]['point'];
-
+function displayCards($mainDeck, $playerCards){
     echo "<br>";
     echo "<h1>Tom</h1>";
     echo '<ul><li>' . $playerCards[0]['card'] . '</li><li>' . $playerCards[1]['card'] . '</li></ul>' ;
-    echo $player1Points;
+    //echo $player1Points;
     echo "<br>";
-    //var_dump($player2);
     echo "<br>";
     echo "<h1>Jerry</h1>";
     echo '<ul><li>' . $playerCards[2]['card'] . '</li><li>' . $playerCards[3]['card'] . '</li></ul>' ;
-    echo $player2Points;
+    //echo $player2Points;
     echo "<br>";
-    return [$player1Points, $player2Points];
+    //return [$player1Points, $player2Points];
 }
 
 //Determine winner
-function winnerIs($player1Points, $player2Points){
+function winnerIs($playerCards){
+    $player1Points = $playerCards[0]['point'] + $playerCards[1]['point'];
+    $player2Points = $playerCards[2]['point'] + $playerCards[3]['point'];
 
     echo '<br>';
+    echo '<p>Tom: ' . $player1Points . '</p>';
+    echo '<br>';
+    echo '<p>Jerry: ' . $player2Points . '</p>';
 
     if($player1Points > $player2Points) {
         if($player1Points > 21) {
-            echo "Winner is Jerry";
+            echo 'Winner is Jerry.';
         } else {
-            echo "Winner is Tom";
+            echo 'Winner is Tom';
         }
     } else if ($player2Points > $player1Points){
         if($player2Points > 21) {
-            echo "Winner is Tom";
+            echo 'Winner is Tom';
         } else {
-            echo "Winner is Jerry";
+            echo 'Winner is Jerry';
         }
     } else {
-    echo "It's draw";
+    echo 'It\'s draw';
     }
+    return [$player1Points, $player2Points];
 }
 
 $mainDeck = makeDeck($ranks, $suits, $mainDeck);
 $playerCards = deal($mainDeck);    //Get return value of deal()
 
-$results = blackJack($mainDeck, $playerCards);    //Get return value of blackJack()
-winnerIs($results[0], $results[1]);    //Compare players' points and print who the winner is
+displayCards($mainDeck, $playerCards);    //Get return value of blackJack()
+$results = winnerIs($playerCards);    //Compare players' points and print who the winner is

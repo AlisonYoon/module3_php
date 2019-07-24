@@ -18,7 +18,7 @@
         <?php $p2Score = $results[1]; ?>
     </div>
 
-    <div class="result"><?php echo winnerIs($p1Score, $p2Score); ?></div>
+<!--    <div class="result">--><?php //echo winnerIs($playerCards); ?><!--</div>-->
 </div>
 </body>
 </html>
