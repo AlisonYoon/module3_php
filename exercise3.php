@@ -136,7 +136,6 @@ $ranks = [
     'jack' => 10
 ];
 
-
 $mainDeck = [];
 
 foreach($ranks as $card => $point) {
@@ -151,7 +150,7 @@ function pickCards(array $cards){
     $rdk = array_rand($cards);
     $pickedCardPoint = $cards[$rdk];
 
-    return ['card' => $rdk, 'point' => $cards[$rdk]];
+    return ['card' => $rdk, 'point' => $pickedCardPoint];
 }
 
 function blackJack($mainDeck){
@@ -164,10 +163,19 @@ function blackJack($mainDeck){
         $player2[] = $cardPicked;
         unset($mainDeck[$cardPicked['card']]);
     }
-    var_dump($player1);
-    var_dump($player2);
-    var_dump($mainDeck);
-
+    //var_dump($player1);
+    echo "<br>";
+    echo "<h1>Player 1</h1>";
+    echo '<ul><li>' . $player1[0]['card'] . '</li><li>' . $player1[1]['card'] . '</li></ul>' ;
+    echo $player1[0]['point'] + $player1[1]['point'];
+    echo "<br>";
+    //var_dump($player2);
+    echo "<br>";
+    echo "<h1>Player 2</h1>";
+    echo '<ul><li>' . $player2[0]['card'] . '</li><li>' . $player2[1]['card'] . '</li></ul>' ;
+    echo $player2[0]['point'] + $player2[1]['point'];
+    echo "<br>";
+    //var_dump($mainDeck);
 }
 
 blackJack($mainDeck);
