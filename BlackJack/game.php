@@ -93,14 +93,11 @@ function displayCards($mainDeck, $playerCards){
     echo "<br>";
     echo "<h1>Tom</h1>";
     echo '<ul><li>' . $playerCards[0]['card'] . '</li><li>' . $playerCards[1]['card'] . '</li></ul>' ;
-    //echo $player1Points;
     echo "<br>";
     echo "<br>";
     echo "<h1>Jerry</h1>";
     echo '<ul><li>' . $playerCards[2]['card'] . '</li><li>' . $playerCards[3]['card'] . '</li></ul>' ;
-    //echo $player2Points;
     echo "<br>";
-    //return [$player1Points, $player2Points];
 }
 
 //Determine winner
@@ -134,5 +131,5 @@ function winnerIs($playerCards){
 $mainDeck = makeDeck($ranks, $suits, $mainDeck);
 $playerCards = deal($mainDeck);    //Get return value of deal()
 
-displayCards($mainDeck, $playerCards);    //Get return value of blackJack()
+displayCards($mainDeck, $playerCards);    //Print players' hand
 $results = winnerIs($playerCards);    //Compare players' points and print who the winner is
