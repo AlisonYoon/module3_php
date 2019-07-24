@@ -163,19 +163,40 @@ function blackJack($mainDeck){
         $player2[] = $cardPicked;
         unset($mainDeck[$cardPicked['card']]);
     }
+
+    $player1Points = $player1[0]['point'] + $player1[1]['point'];
+    $player2Points = $player2[0]['point'] + $player2[1]['point'];
+
     //var_dump($player1);
     echo "<br>";
     echo "<h1>Player 1</h1>";
     echo '<ul><li>' . $player1[0]['card'] . '</li><li>' . $player1[1]['card'] . '</li></ul>' ;
-    echo $player1[0]['point'] + $player1[1]['point'];
+    echo $player1Points;
     echo "<br>";
     //var_dump($player2);
     echo "<br>";
     echo "<h1>Player 2</h1>";
     echo '<ul><li>' . $player2[0]['card'] . '</li><li>' . $player2[1]['card'] . '</li></ul>' ;
-    echo $player2[0]['point'] + $player2[1]['point'];
+    echo $player2Points;
     echo "<br>";
     //var_dump($mainDeck);
+    return [$player1Points, $player2Points];
 }
 
-blackJack($mainDeck);
+//Determine winner
+function winnerIs($player1Points, $player2points){
+    //var_dump($player1Points);
+    echo '<br>';
+    //var_dump(($player2points));
+    if($player1Points > $player2points) {
+        echo "Winner is Player1";
+    } else if ($player2points > $player1Points){
+        echo "Winner is Player2";
+    } else {
+        echo "It's tie";
+    }
+}
+
+
+$results = blackJack($mainDeck);
+winnerIs($results[0], $results[1]);
