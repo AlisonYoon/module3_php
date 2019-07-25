@@ -68,10 +68,12 @@ class Game extends TestCase
                 $mainDeck[$deckKey] = $point; //$point is the value for each key in a new $mainDeck array
             }
         }
+        $expectedDeal = false;
 
         // Execution
         $result = deal($mainDeck);
         $actualPlayerCardsLength = count($result);
+        $result[0] == $result[1];
 
         // Assertion
         $this->assertEquals($expectedPlayerCardsLength, $actualPlayerCardsLength);
