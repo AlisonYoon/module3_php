@@ -73,7 +73,7 @@ class Game extends TestCase
         // Execution
         $result = deal($mainDeck);
         $actualPlayerCardsLength = count($result);
-        $result[0] == $result[1];
+
 
         // Assertion
         $this->assertEquals($expectedPlayerCardsLength, $actualPlayerCardsLength);
