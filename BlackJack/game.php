@@ -135,8 +135,7 @@ function winnerIs($playerCards){
 
 $mainDeck = makeDeck($ranks, $suits, $mainDeck);
 $playerCards = deal($mainDeck);    //Get return value of deal()
-
-//var_dump($playerCards);
+//var_dump($mainDeck);
 //displayCards($mainDeck, $playerCards);    //Print players' hand
 $results = winnerIs($playerCards);    //Compare players' points and print who the winner is
 
