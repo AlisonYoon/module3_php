@@ -10,7 +10,7 @@ abstract class Animal
 class Sheep extends Animal
 {
     private $color = 'black';
-    private $food = 'grass';
+    protected $food = 'grass';
 
     public function setFood(string $food): string
     {
@@ -55,9 +55,36 @@ class Sheep extends Animal
     }
 }
 
+class DairySheep extends Sheep   // this inherits from Sheep class
+{
+    public function getLegs()
+    {
+        return $this->legs;
+    }
+
+    public function setFood(string $food): string
+    {
+        if($food === 'rocks' || $food === 'grass'){
+            $this->food = $food;
+            return 'Thanks for the ' . $food . '!';
+        } else {
+            return 'I\'m not eating ' . $food . '!!!';
+        }
+    }
+}
+
 $sheeply = new Sheep();
 echo $sheeply->getColor();
 echo '<br>';
 echo $sheeply->setFood('hay');
 echo '<br>';
 echo $sheeply->setFood('rocks');
+echo '<br>';
+$weeply = new DairySheep();
+echo $sheeply->setFood('hay');
+echo '<br>';
+echo $weeply->getLegs();
+echo '<br>';
+echo $weeply->setFood('rocks');
+echo '<br>';
+echo $weeply->setFood('hay');
