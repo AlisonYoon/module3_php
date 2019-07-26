@@ -57,6 +57,7 @@ $ranks = [
 'queen' => 10,
 'jack' => 10
 ];
+$points = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10];
 
 //this empty $mainDeck array will be dynamically generated for a deal
 $mainDeck = [];
@@ -71,6 +72,39 @@ function makeDeck($ranks, $suits, $mainDeck){
     }
     return $mainDeck;
 }
+
+// Use class to make an array of object instead of associated array for card deck
+class Cards
+{
+    public $suit;
+    public $rank;
+    public $points;
+    public $cardDeck;
+
+    public function __construct(string $suit, int $rank, int $points)
+    {
+        $this->suit = $suit;
+        $this->rank = $rank;
+        $this->points = $points;
+    }
+}
+
+class generateCards extends Cards
+{
+    public function generateDeck()
+    {
+        foreach($suits as $suit){
+        foreach($ranks as $rank){
+            foreach($points as $point){
+                new Cards($suit, $rank, $point);
+            }
+        }
+    }
+        $cardDeck[] = [$suit, $rank, $point];
+    }
+}
+$see = new generateCards('clubs', 4, 4);
+var_dump($see);
 
 //Deal while getting rid of the cards that are picked from the deck
 function deal($cards) {
