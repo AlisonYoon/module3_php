@@ -5,7 +5,7 @@ if(isset($_POST['firstName']) && $_POST['firstName'] === 'sam') {
     echo 'Nearly there, ' . $_POST['lastName'];
 }
 
-$hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
+$hash = password_hash($_POST['password'], PASSWORD_DEFAULT);  //If you use $_GET here, it will print out user's password on url.
 if($hash === $hashFromDatabase) {
     //login
 } else {
