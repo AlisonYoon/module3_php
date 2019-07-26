@@ -1,40 +1,20 @@
 <?php
 
-session_start();
-$pw = '12345';
+$pw = 'sheep45';
 $storedPw = password_hash($pw, PASSWORD_DEFAULT);
+$login= false;
 
 if(isset($_POST['pw'])) {
     $hash = password_hash($_POST['pw'], PASSWORD_DEFAULT);
-    $login = password_verify($storedPw, $hash);
-}
-//$isCool = password_verify($_POST['pw'], $hash); //It needs to be guarded because it doesn't have data yet before user submit data
-
-
-//if($hash === $hashFromDatabase) {
-//    echo "Welcome " . $_POST['id'];
-//} else {
-//    echo "Please check your password";
-//}
-//
-//if($isCool) {
-//    echo "Welcome " . $_POST['id'];
-//} else {
-//    echo "Please check your password";
-//}
-
-if(isset($_POST['id']) && $_POST['id'] === 'makki') {
-    if(isset($_POST['pw']) && $_POST['pw'] === $hash) {
-        echo "Welcome Makki!";
-    } else {
-        echo "Please check your password again";
-    }
-} else {
-    echo "Please sign up";
+    $login = password_verify($_POST['pw'], $storedPw);
 }
 
-
-
+if(isset($_POST['pw']) && $login) {
+    echo "Welcome!";
+} elseif (isset($_POST['pw']) && !$login) {   // if you just use "else" here, it will execute it as long as $_POST['pw'] is false,
+                                                // which will always be false if user hasn't typed password yet.
+    echo "Please check your password";
+}
 
 ?>
 
