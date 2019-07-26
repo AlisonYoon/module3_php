@@ -49,7 +49,7 @@ echo '<br>';
 $sheeply->goToLanguageSchool();
 echo 'I am sheeply and I say ' . $sheeply->speak();
 echo '<br>';
-echo  $weeply->speak();   // only way we can access private $sound is through the function inside the class. to print it.
+echo  $weeply->speak();   // only way we can access private $sound is through the method inside the class. to print it.
 echo '<br>';
 
 $piggly = new Pig();
