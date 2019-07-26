@@ -46,6 +46,11 @@ class Dog extends Pet
     }
 }
 
+class Cat extends Pet
+{
+    private $color = 'grey';
+}
+
 $puppy = new Dog();
 echo $puppy->getColor();
 echo '<br>';
