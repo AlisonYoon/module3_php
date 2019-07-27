@@ -73,32 +73,6 @@ function makeDeck($ranks, $suits, $mainDeck){
     return $mainDeck;
 }
 
-// Use class to make an array of object instead of associated array for card deck
-class Card
-{
-    public $suit;
-    public $rank;
-    public $points;
-
-    public function __construct(string $suit, int $rank, int $points)
-    {
-        $this->suit = $suit;
-        $this->rank = $rank;
-        $this->points = $points;
-    }
-
-    public function generateDeck()
-    {
-        foreach($suits as $suit){
-            foreach($ranks as $rank){
-                foreach($points as $point){
-                    new Card($suit, $rank, $point);
-                }
-            }
-        }
-        $cardDeck[] = [$suit, $rank, $point];
-    }
-}
 
 //Deal while getting rid of the cards that are picked from the deck
 function deal($cards) {
