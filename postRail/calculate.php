@@ -1,5 +1,5 @@
 <?php
-
+require_once('fence.php');
 abstract class Calculation
 {
     protected $postAmount;
@@ -25,6 +25,15 @@ class calAmount extends Calculation
     {
         $railAmount = 5/8*$length - 1/16;
         $postAmount = $railAmount + 1;
-        return [$railAmount, $postAmount];
+        return [round($railAmount), round($postAmount)];
     }
 }
+
+$whatIsLength = new CalLength();
+$result = $whatIsLength->calLen(6,8);
+echo $result . 'm';
+echo '<br>';
+echo '<br>';
+$whatIsAmount = new calAmount();
+$amount = $whatIsAmount->calAmt(8.1);
+var_dump($amount);
