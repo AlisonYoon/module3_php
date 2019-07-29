@@ -9,7 +9,7 @@ class FenceTest extends TestCase
     public function testFenceUnits_returnsFence()
     {
         // Setup
-        $newFence = new Fence(5,5);
+        $newFence = new Fence(8,5);
         $expectedFenceUnits = 4;
 
         //Execution
