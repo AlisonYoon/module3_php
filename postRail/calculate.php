@@ -9,15 +9,28 @@ abstract class Calculation
 
 class CalLength extends Calculation
 {
-    public function calLen(int $postAmount, int $railAmount)
+    public $fence;
+
+    public function __construct($fence)
+    {
+        $this->fence = $fence;
+    }
+
+    public function calLen(int $railAmount, int $postAmount)
     {
         $length = ($postAmount * 0.1) + ($railAmount * 1.5);
         return $length;
     }
 }
 
-class calAmount extends Calculation
+class CalAmount extends Calculation
 {
+    public $fence;
+
+    public function __construct($fence)
+    {
+        $this->fence = $fence;
+    }
     //$this->railAmount = $railAmount;
     //$this->postAmount = $postAmount;
 
@@ -25,15 +38,23 @@ class calAmount extends Calculation
     {
         $railAmount = 5/8*$length - 1/16;
         $postAmount = $railAmount + 1;
+        //$postAmount = $length*5/8 + 15/16;
         return [round($railAmount), round($postAmount)];
     }
 }
 
-$whatIsLength = new CalLength();
-$result = $whatIsLength->calLen(6,8);
+$newFence = new Fence(18,10);
+$fenceUnit=$newFence->getFenceUnits();
+echo $fenceUnit;
+echo '<br>';
+echo '<br>';
+$whatIsLength = new CalLength($newFence);
+$whatIsAmount = new CalAmount($newFence);
+$result = $whatIsLength->calLen(5,9);
+$amount = $whatIsAmount->calAmt(59.5);
 echo $result . 'm';
 echo '<br>';
 echo '<br>';
-$whatIsAmount = new calAmount();
-$amount = $whatIsAmount->calAmt(8.1);
+//$whatIsAmount = new calAmount(514);
+//$amount = $whatIsAmount->calAmt(514);
 var_dump($amount);
