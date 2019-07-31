@@ -9,17 +9,24 @@ abstract class Calculation
 
 class CalLength extends Calculation
 {
-    public $fence;
+    //public $fenceUnit;
 
-    public function __construct($fence)
+    public function __construct($fenceUnit)
     {
-        $this->fence = $fence;
+        //$this->fenceUnit = $fenceUnit;
+        if($fenceUnit < 0) {
+            echo 'Sorry, too little materials to build a fence!';
+        } else {
+            $this->length = (($fenceUnit+1) * 0.1) + ($fenceUnit * 1.5);
+        }
+
+        //return $length;
+
     }
 
-    public function calLen(int $railAmount, int $postAmount)
+    public function getLength()
     {
-        $length = ($postAmount * 0.1) + ($railAmount * 1.5);
-        return $length;
+        return $this->length;
     }
 }
 
@@ -43,18 +50,18 @@ class CalAmount extends Calculation
     }
 }
 
-$newFence = new Fence(18,10);
+$newFence = new Fence(5,1);
 $fenceUnit=$newFence->getFenceUnits();
 echo $fenceUnit;
 echo '<br>';
 echo '<br>';
-$whatIsLength = new CalLength($newFence);
-$whatIsAmount = new CalAmount($newFence);
-$result = $whatIsLength->calLen(5,9);
-$amount = $whatIsAmount->calAmt(59.5);
+$whatIsLength = new CalLength($fenceUnit);
+//$whatIsAmount = new CalAmount($newFence);
+$result = $whatIsLength->getLength();
+//$amount = $whatIsAmount->calAmt(7.9);
 echo $result . 'm';
 echo '<br>';
 echo '<br>';
 //$whatIsAmount = new calAmount(514);
 //$amount = $whatIsAmount->calAmt(514);
-var_dump($amount);
+//var_dump($amount);
