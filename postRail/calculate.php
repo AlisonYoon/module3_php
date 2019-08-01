@@ -47,22 +47,21 @@ class CalAmount extends Calculation
     {
         return ["rail" => $this->railAmount, "post"=>$this->postAmount];
     }
-
 }
 
-$newFence = new Fence(50000,50000);
-$fenceUnit=$newFence->getFenceUnits();
-echo $fenceUnit;
-echo '<br>';
-echo '<br>';
-$whatIsLength = new CalLength($fenceUnit);
-
-$result = $whatIsLength->getLength();
-$whatIsAmount = new CalAmount($result);
-$amount = $whatIsAmount->getAmount();
-echo $result . 'm';
-echo '<br>';
-echo '<br>';
-//$whatIsAmount = new calAmount(514);
-//$amount = $whatIsAmount->calAmt(514);
-var_dump($amount);
+//$newFence = new Fence(10,10);
+//$fenceUnit=$newFence->getFenceUnits();
+//echo $fenceUnit;
+//echo '<br>';
+//echo '<br>';
+//$whatIsLength = new CalLength($fenceUnit);
+//
+//$result = $whatIsLength->getLength();
+//$whatIsAmount = new CalAmount($result);
+//$amount = $whatIsAmount->getAmount();
+//echo $result . 'm';
+//echo '<br>';
+//echo '<br>';
+////$whatIsAmount = new calAmount(514);
+////$amount = $whatIsAmount->calAmt(514);
+//var_dump($amount);
