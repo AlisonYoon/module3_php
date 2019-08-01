@@ -26,7 +26,7 @@ function printResult() {
             $whatIsLength = new CalLength($fenceUnit);
             $result = $whatIsLength->getLength();
 
-            echo '<p class="result-msg">With <span>' . $rail . ' Rail(s)</span> and <span>' . $post . ' Post(s)</span>, Your fence can be ' .$result . ' m</p>';
+            echo '<p class="result-msg">With <span>' . $rail . ' Rail(s)</span> and <span>' . $post . ' Post(s)</span>, Your fence can be <span>' .$result . ' m</span></p>';
 
         }
     }
