@@ -33,10 +33,6 @@ class CalculateLengthTest extends TestCase
 
     }
 
-}
-
-class CalculateAmountTest extends TestCase
-{
     public function testCalculateAmount_returnsRailPostAmount()
     {
         // Setup
