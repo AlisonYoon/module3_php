@@ -32,9 +32,11 @@ class CalAmount extends Calculation
     public function __construct($length)
     {
         if($length <= 0) {
-            echo 'Sorry, the fence is too short to build';
             $this->postAmount = -1;
             $this->railAmount = -1;
+            echo '<p class="result-msg">Sorry, the fence is too short to build</p>';
+        } elseif($length == NULL) {
+            echo '<p class="result-msg">Sorry, the fence is too short to build</p>';
         } else {
             $railAmount = 5/8*$length - 1/16;
             $postAmount = $railAmount + 1;
