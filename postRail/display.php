@@ -6,13 +6,15 @@ function printResult() {
     if(isset($_GET['length'])) {
         if($_GET['length'] === '') {
             echo '<p class="result-msg">Please let me know how long you want your fence to be.</p>';
+        } elseif($_GET['length'] < 0){
+            echo '<p class="result-msg">Please let me know how long you want your fence to be.</p>';
         } else {
             $length = $_GET['length'];
 
             $whatIsAmount = new CalAmount($length);
             $amount = $whatIsAmount->getAmount();
 
-            echo '<p class="result-msg">' . 'For <span>' . $length .  ' m</span> fence, ' . 'You need <span>' . $amount["rail"] . ' rail(s)</span>, and <span>' . $amount["post"] . '</span> post(s).</p>';
+            echo '<p class="result-msg">' . 'For <span>' . $length .  ' m</span> fence, ' . 'You need <span>' . $amount["rail"] . '</span> rail(s), and <span>' . $amount["post"] . '</span> post(s).</p>';
         }
     } elseif (isset($_GET['rail']) && isset($_GET['post'])) {
         if($_GET['rail'] === '' || $_GET['post'] === ''){
